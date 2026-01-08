@@ -42,7 +42,6 @@ export const travelServices: TravelService[] = [
     path: "/villas",
     color: "text-orange-600",
     bgColor: "bg-orange-100",
-    comingSoon: true,
   },
   {
     id: "packages",
@@ -52,7 +51,6 @@ export const travelServices: TravelService[] = [
     path: "/packages",
     color: "text-pink-600",
     bgColor: "bg-pink-100",
-    comingSoon: true,
   },
   {
     id: "trains",
@@ -62,7 +60,6 @@ export const travelServices: TravelService[] = [
     path: "/trains",
     color: "text-green-600",
     bgColor: "bg-green-100",
-    comingSoon: true,
   },
   {
     id: "buses",
@@ -72,7 +69,6 @@ export const travelServices: TravelService[] = [
     path: "/buses",
     color: "text-red-600",
     bgColor: "bg-red-100",
-    comingSoon: true,
   },
   {
     id: "cabs",
@@ -82,7 +78,6 @@ export const travelServices: TravelService[] = [
     path: "/cabs",
     color: "text-yellow-600",
     bgColor: "bg-yellow-100",
-    comingSoon: true,
   },
   {
     id: "tours",
@@ -92,7 +87,6 @@ export const travelServices: TravelService[] = [
     path: "/tours",
     color: "text-teal-600",
     bgColor: "bg-teal-100",
-    comingSoon: true,
   },
   {
     id: "visa",
@@ -102,7 +96,6 @@ export const travelServices: TravelService[] = [
     path: "/visa",
     color: "text-indigo-600",
     bgColor: "bg-indigo-100",
-    comingSoon: true,
   },
   {
     id: "cruise",
@@ -112,7 +105,6 @@ export const travelServices: TravelService[] = [
     path: "/cruise",
     color: "text-cyan-600",
     bgColor: "bg-cyan-100",
-    comingSoon: true,
   },
   {
     id: "forex",
@@ -122,7 +114,6 @@ export const travelServices: TravelService[] = [
     path: "/forex",
     color: "text-emerald-600",
     bgColor: "bg-emerald-100",
-    comingSoon: true,
   },
   {
     id: "insurance",
@@ -132,9 +123,7 @@ export const travelServices: TravelService[] = [
     path: "/insurance",
     color: "text-rose-600",
     bgColor: "bg-rose-100",
-    comingSoon: true,
   },
 ];
 
-export const activeServices = travelServices.filter(s => !s.comingSoon);
-export const comingSoonServices = travelServices.filter(s => s.comingSoon);
+export const activeServices = travelServices;
