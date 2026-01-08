@@ -1,12 +1,10 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { 
   Plane, 
   Hotel, 
   User, 
-  Menu,
-  X,
   Sparkles,
   ChevronDown,
   LogOut,
@@ -150,85 +148,8 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-border overflow-hidden"
-          >
-            <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
-              {/* Services Grid */}
-              <div className="grid grid-cols-3 gap-2 pb-4 border-b border-border">
-                {travelServices.slice(0, 6).map((service) => (
-                  <Link 
-                    key={service.id}
-                    to={service.comingSoon ? "#" : service.path}
-                    onClick={() => !service.comingSoon && setIsOpen(false)}
-                    className={`flex flex-col items-center gap-1 p-2 rounded-lg ${service.comingSoon ? 'opacity-50' : 'hover:bg-muted'}`}
-                  >
-                    <div className={`w-10 h-10 rounded-lg ${service.bgColor} flex items-center justify-center`}>
-                      <service.icon className={`w-5 h-5 ${service.color}`} />
-                    </div>
-                    <span className="text-xs text-center">{service.name}</span>
-                  </Link>
-                ))}
-              </div>
-
-              {navItems.map((item) => (
-                <Link key={item.path} to={item.path} onClick={() => setIsOpen(false)}>
-                  <Button
-                    variant={item.featured ? "hero-secondary" : "ghost"}
-                    className="w-full justify-start"
-                  >
-                    <item.icon className="w-4 h-4 mr-2" />
-                    {item.label}
-                  </Button>
-                </Link>
-              ))}
-              
-              <div className="border-t border-border pt-2 mt-2">
-                {user ? (
-                  <>
-                    <Link to="/dashboard" onClick={() => setIsOpen(false)}>
-                      <Button variant="ghost" className="w-full justify-start">
-                        <LayoutDashboard className="w-4 h-4 mr-2" />
-                        Dashboard
-                      </Button>
-                    </Link>
-                    <Button 
-                      variant="ghost" 
-                      className="w-full justify-start text-destructive" 
-                      onClick={() => { handleSignOut(); setIsOpen(false); }}
-                    >
-                      <LogOut className="w-4 h-4 mr-2" />
-                      Sign Out
-                    </Button>
-                  </>
-                ) : (
-                  <Link to="/auth" onClick={() => setIsOpen(false)}>
-                    <Button variant="hero" className="w-full">
-                      Sign In
-                    </Button>
-                  </Link>
-                )}
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.nav>
   );
 };
