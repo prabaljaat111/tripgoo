@@ -72,7 +72,6 @@ const BottomNav = () => {
               className="absolute bottom-24 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-lg liquid-glass rounded-3xl p-5 overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Header */}
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-display font-bold text-lg">All Services</h3>
                 <button 
@@ -83,7 +82,6 @@ const BottomNav = () => {
                 </button>
               </div>
               
-              {/* Services Grid */}
               <div className="grid grid-cols-4 gap-3">
                 {travelServices.map((service) => (
                   <Link
@@ -124,7 +122,6 @@ const BottomNav = () => {
               className="absolute bottom-24 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-sm liquid-glass rounded-3xl p-5 overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* User Info */}
               <div className="flex items-center gap-3 mb-4 pb-4 border-b border-black/10">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
                   <User className="w-6 h-6 text-white" />
@@ -137,7 +134,6 @@ const BottomNav = () => {
                 </div>
               </div>
 
-              {/* Menu Items */}
               <div className="space-y-1">
                 <Link
                   to="/dashboard"
@@ -176,9 +172,9 @@ const BottomNav = () => {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 300, damping: 30, delay: 0.1 }}
-        className="fixed bottom-4 left-0 right-0 z-50 flex justify-center px-4"
+        className="fixed bottom-3 sm:bottom-4 left-0 right-0 z-50 flex justify-center px-3 sm:px-4"
       >
-        <div className="liquid-glass rounded-[28px] px-3 py-2 shadow-2xl w-full max-w-md">
+        <div className="liquid-glass rounded-2xl sm:rounded-[28px] px-2 sm:px-3 py-1.5 sm:py-2 shadow-2xl w-full max-w-[95vw] sm:max-w-md">
           <div className="flex items-center justify-around">
             {navItems.map((item) => {
               const active = isActive(item.path);
@@ -189,21 +185,19 @@ const BottomNav = () => {
                     <motion.div
                       whileTap={{ scale: 0.9 }}
                       whileHover={{ scale: 1.05 }}
-                      className="relative -mt-7"
+                      className="relative -mt-5 sm:-mt-7"
                     >
-                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/40">
-                        <item.icon className="w-6 h-6 text-white" />
+                      <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/40">
+                        <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
-                      {/* Glow effect */}
                       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 to-transparent" />
-                      {/* Pulse animation */}
                       <motion.div
                         className="absolute inset-0 rounded-full bg-primary/20"
                         animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
                         transition={{ repeat: Infinity, duration: 2 }}
                       />
                     </motion.div>
-                    <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-[9px] font-semibold text-primary whitespace-nowrap">
+                    <span className="absolute -bottom-3 sm:-bottom-4 left-1/2 -translate-x-1/2 text-[8px] sm:text-[9px] font-semibold text-primary whitespace-nowrap">
                       AI Copilot
                     </span>
                   </Link>
@@ -214,17 +208,17 @@ const BottomNav = () => {
                 <Link key={item.path} to={item.path}>
                   <motion.div
                     whileTap={{ scale: 0.9 }}
-                    className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all ${
+                    className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${
                       active ? "bg-white/50" : ""
                     }`}
                   >
-                    <item.icon 
-                      className={`w-5 h-5 transition-colors ${
+                    <item.icon
+                      className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${
                         active ? "text-primary" : "text-foreground/60"
-                      }`} 
+                      }`}
                     />
-                    <span 
-                      className={`text-[10px] font-medium transition-colors ${
+                    <span
+                      className={`text-[9px] sm:text-[10px] font-medium transition-colors ${
                         active ? "text-primary" : "text-foreground/60"
                       }`}
                     >
@@ -239,16 +233,16 @@ const BottomNav = () => {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={handleProfileClick}
-              className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all ${
+              className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${
                 showProfile || isActive("/dashboard") || isActive("/auth") ? "bg-white/50" : ""
               }`}
             >
               {user ? (
                 <>
-                  <div className="w-5 h-5 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                    <User className="w-3 h-3 text-white" />
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                    <User className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />
                   </div>
-                  <span className={`text-[10px] font-medium transition-colors ${
+                  <span className={`text-[9px] sm:text-[10px] font-medium transition-colors ${
                     showProfile || isActive("/dashboard") ? "text-primary" : "text-foreground/60"
                   }`}>
                     Profile
@@ -256,8 +250,8 @@ const BottomNav = () => {
                 </>
               ) : (
                 <>
-                  <LogIn className="w-5 h-5 text-foreground/60" />
-                  <span className="text-[10px] font-medium text-foreground/60">
+                  <LogIn className="w-4 h-4 sm:w-5 sm:h-5 text-foreground/60" />
+                  <span className="text-[9px] sm:text-[10px] font-medium text-foreground/60">
                     Sign In
                   </span>
                 </>
@@ -268,17 +262,17 @@ const BottomNav = () => {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={handleServicesClick}
-              className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all ${
+              className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${
                 showServices ? "bg-white/50" : ""
               }`}
             >
-              <Grid3X3 
-                className={`w-5 h-5 transition-colors ${
+              <Grid3X3
+                className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${
                   showServices ? "text-primary" : "text-foreground/60"
-                }`} 
+                }`}
               />
-              <span 
-                className={`text-[10px] font-medium transition-colors ${
+              <span
+                className={`text-[9px] sm:text-[10px] font-medium transition-colors ${
                   showServices ? "text-primary" : "text-foreground/60"
                 }`}
               >
