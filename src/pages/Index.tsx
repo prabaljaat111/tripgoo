@@ -7,11 +7,10 @@ import { Input } from "@/components/ui/input";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import DestinationCard from "@/components/DestinationCard";
+import TravelServicesGrid from "@/components/TravelServicesGrid";
 import { destinations } from "@/data/travelData";
 import heroBg from "@/assets/hero-bg.jpg";
 import { 
-  Plane, 
-  Hotel, 
   Sparkles, 
   Shield, 
   ArrowRight,
@@ -76,8 +75,8 @@ const Index = () => {
               </h1>
               
               <p className="text-lg md:text-xl text-white/80 mb-8 max-w-xl">
-                Just tell us what you want. Our AI Copilot creates personalized itineraries, 
-                finds the best deals, and handles everything for your perfect trip.
+                Flights, Hotels, Trains, Buses, Cabs & more. Our AI Copilot creates 
+                personalized itineraries and handles everything for your perfect trip.
               </p>
 
               {/* AI Chat Input */}
@@ -91,21 +90,6 @@ const Index = () => {
                 <Link to="/copilot">
                   <Button variant="hero" size="xl">
                     <Send className="w-5 h-5" />
-                  </Button>
-                </Link>
-              </div>
-
-              <div className="flex flex-wrap gap-4 mt-8">
-                <Link to="/flights">
-                  <Button variant="hero-outline" size="lg">
-                    <Plane className="w-5 h-5" />
-                    Search Flights
-                  </Button>
-                </Link>
-                <Link to="/hotels">
-                  <Button variant="hero-outline" size="lg">
-                    <Hotel className="w-5 h-5" />
-                    Find Hotels
                   </Button>
                 </Link>
               </div>
@@ -123,6 +107,22 @@ const Index = () => {
             <div className="w-1 h-2 bg-white/50 rounded-full" />
           </div>
         </motion.div>
+      </section>
+
+      {/* Travel Services Grid */}
+      <section className="py-12 bg-background border-b border-border">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-8"
+          >
+            <h2 className="font-display text-2xl font-bold mb-2">All Travel Services</h2>
+            <p className="text-muted-foreground">Everything you need for your journey in one place</p>
+          </motion.div>
+          <TravelServicesGrid />
+        </div>
       </section>
 
       {/* Features Section */}
@@ -180,7 +180,7 @@ const Index = () => {
                 color: "text-amber-500",
                 bg: "bg-amber-500/10",
               },
-            ].map((feature, index) => (
+            ].map((feature) => (
               <motion.div key={feature.title} variants={itemVariants}>
                 <Card variant="glass" className="h-full">
                   <CardContent className="p-6">
