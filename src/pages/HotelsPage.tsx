@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import Navbar from "@/components/layout/Navbar";
+
 import Footer from "@/components/layout/Footer";
 import HotelCard from "@/components/HotelCard";
 import { hotels, destinations } from "@/data/travelData";
@@ -41,11 +41,9 @@ const HotelsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-
+    <div className="min-h-screen bg-background pb-24">
       {/* Hero Section */}
-      <section className="pt-24 pb-12 gradient-primary">
+      <section className="py-12 gradient-primary">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

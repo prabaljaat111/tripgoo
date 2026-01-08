@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/layout/Navbar";
+
 import TrustScoreBadge from "@/components/TrustScoreBadge";
 import { useAuth } from "@/contexts/AuthContext";
 import { 
@@ -51,9 +51,8 @@ const DashboardPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-muted/30">
-      <Navbar />
-      <div className="container mx-auto px-4 pt-24 pb-12">
+    <div className="min-h-screen bg-muted/30 pb-24">
+      <div className="container mx-auto px-4 py-8">
         {/* Welcome Header */}
         <div className="flex items-center justify-between mb-8">
           <div>

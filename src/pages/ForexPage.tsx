@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import Navbar from "@/components/layout/Navbar";
+
 import Footer from "@/components/layout/Footer";
 import { 
   CreditCard, 
@@ -55,10 +55,8 @@ const ForexPage = () => {
   const convertedAmount = (amount / rate).toFixed(2);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-
-      <section className="pt-24 pb-12 bg-gradient-to-br from-emerald-500 to-teal-600">
+    <div className="min-h-screen bg-background pb-24">
+      <section className="py-12 bg-gradient-to-br from-emerald-500 to-teal-600">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -42,7 +42,7 @@ const BottomNav = () => {
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
-            className="absolute bottom-24 left-4 right-4 liquid-glass rounded-3xl p-4"
+            className="absolute bottom-24 left-1/2 -translate-x-1/2 w-full max-w-md liquid-glass rounded-3xl p-4"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="grid grid-cols-4 gap-3">
@@ -71,7 +71,7 @@ const BottomNav = () => {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="fixed bottom-4 left-4 right-4 z-50 md:hidden"
+        className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-md"
       >
         <div className="liquid-glass rounded-[28px] px-2 py-2 shadow-2xl">
           <div className="flex items-center justify-around">
