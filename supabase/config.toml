@@ -1,0 +1,4 @@
+project_id = "hcnxdyqhscappjcipyae"
+
+[functions.travel-copilot]
+verify_jwt = false
