@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
+import BottomNav from "@/components/layout/BottomNav";
 import Index from "./pages/Index";
 import CopilotPage from "./pages/CopilotPage";
 import FlightsPage from "./pages/FlightsPage";
@@ -50,6 +51,7 @@ const App = () => (
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <BottomNav />
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
