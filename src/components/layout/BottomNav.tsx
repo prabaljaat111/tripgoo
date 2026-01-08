@@ -65,11 +65,11 @@ const BottomNav = () => {
             onClick={() => setShowServices(false)}
           >
             <motion.div
-              initial={{ y: 100, opacity: 0, scale: 0.9 }}
-              animate={{ y: 0, opacity: 1, scale: 1 }}
-              exit={{ y: 100, opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="absolute bottom-24 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-lg liquid-glass rounded-3xl p-5 overflow-hidden"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-lg liquid-glass rounded-3xl p-4 sm:p-5 overflow-hidden max-h-[80vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-4">
