@@ -176,9 +176,9 @@ const BottomNav = () => {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 300, damping: 30, delay: 0.1 }}
-        className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-md"
+        className="fixed bottom-4 left-0 right-0 z-50 flex justify-center px-4"
       >
-        <div className="liquid-glass rounded-[28px] px-3 py-2 shadow-2xl">
+        <div className="liquid-glass rounded-[28px] px-3 py-2 shadow-2xl w-full max-w-md">
           <div className="flex items-center justify-around">
             {navItems.map((item) => {
               const active = isActive(item.path);
