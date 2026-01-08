@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import Navbar from "@/components/layout/Navbar";
+
 import Footer from "@/components/layout/Footer";
 import { 
   Ship, 
@@ -74,10 +74,8 @@ const CruisePage = () => {
     cruises.filter(c => c.duration.includes(filter));
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-
-      <section className="pt-24 pb-12 bg-gradient-to-br from-cyan-500 to-blue-600">
+    <div className="min-h-screen bg-background pb-24">
+      <section className="py-12 bg-gradient-to-br from-cyan-500 to-blue-600">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

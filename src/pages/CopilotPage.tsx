@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import Navbar from "@/components/layout/Navbar";
+
 import TrustScoreBadge from "@/components/TrustScoreBadge";
 import { supabase } from "@/integrations/supabase/client";
 import { 
@@ -140,9 +140,8 @@ const CopilotPage = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <Navbar />
 
-      <div className="flex-1 pt-16">
+      <div className="flex-1 pb-24">
         <div className="container mx-auto px-4 py-6 h-[calc(100vh-4rem)] flex flex-col">
           {/* Header */}
           <div className="flex items-center gap-3 mb-6">
