@@ -6,7 +6,7 @@ const TopBar = () => {
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-md"
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-auto"
     >
       <div className="liquid-glass rounded-2xl px-4 py-2.5 flex items-center justify-center">
         <Link to="/" className="flex items-center">
