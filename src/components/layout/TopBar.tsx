@@ -1,7 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const TopBar = () => {
+  const location = useLocation();
+  
+  // Only show on home page
+  if (location.pathname !== "/") return null;
+
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
