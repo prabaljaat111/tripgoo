@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Plane, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import { travelServices } from "@/data/travelServices";
 
 const Footer = () => {
   return (
@@ -8,16 +9,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 gradient-hero rounded-xl flex items-center justify-center">
-                <Plane className="w-5 h-5 text-white transform -rotate-45" />
-              </div>
-              <span className="font-display font-bold text-xl">
+            <Link to="/" className="flex items-center mb-4">
+              <span className="font-display font-bold text-2xl">
                 Trip<span className="text-primary">Go</span>
               </span>
             </Link>
             <p className="text-white/70 text-sm mb-6">
-              India's AI-first travel platform. Plan smarter, travel better.
+              India's AI-first travel platform. Plan smarter, travel better with our complete suite of travel services.
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
@@ -35,26 +33,39 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Travel Services */}
           <div>
-            <h4 className="font-display font-bold text-lg mb-4">Quick Links</h4>
+            <h4 className="font-display font-bold text-lg mb-4">Travel Services</h4>
             <ul className="space-y-3">
-              <li><Link to="/flights" className="text-white/70 hover:text-white transition-colors">Flights</Link></li>
-              <li><Link to="/hotels" className="text-white/70 hover:text-white transition-colors">Hotels</Link></li>
-              <li><Link to="/copilot" className="text-white/70 hover:text-white transition-colors">AI Copilot</Link></li>
-              <li><Link to="/dashboard" className="text-white/70 hover:text-white transition-colors">My Trips</Link></li>
+              {travelServices.slice(0, 6).map((service) => (
+                <li key={service.id}>
+                  <Link 
+                    to={service.comingSoon ? "#" : service.path} 
+                    className={`text-white/70 hover:text-white transition-colors ${service.comingSoon ? 'cursor-not-allowed opacity-50' : ''}`}
+                  >
+                    {service.name} {service.comingSoon && "(Soon)"}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Popular Destinations */}
+          {/* More Services */}
           <div>
-            <h4 className="font-display font-bold text-lg mb-4">Popular Destinations</h4>
+            <h4 className="font-display font-bold text-lg mb-4">More Services</h4>
             <ul className="space-y-3">
-              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Goa</a></li>
-              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Manali</a></li>
-              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Jaipur</a></li>
-              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Kerala</a></li>
-              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Ladakh</a></li>
+              {travelServices.slice(6).map((service) => (
+                <li key={service.id}>
+                  <Link 
+                    to={service.comingSoon ? "#" : service.path} 
+                    className={`text-white/70 hover:text-white transition-colors ${service.comingSoon ? 'cursor-not-allowed opacity-50' : ''}`}
+                  >
+                    {service.name} {service.comingSoon && "(Soon)"}
+                  </Link>
+                </li>
+              ))}
+              <li><Link to="/copilot" className="text-white/70 hover:text-white transition-colors">AI Copilot</Link></li>
+              <li><Link to="/dashboard" className="text-white/70 hover:text-white transition-colors">My Trips</Link></li>
             </ul>
           </div>
 
@@ -63,16 +74,20 @@ const Footer = () => {
             <h4 className="font-display font-bold text-lg mb-4">Contact Us</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-white/70">
-                <MapPin className="w-5 h-5 text-primary" />
-                <span>Mumbai, India</span>
+                <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
+                <span>India</span>
               </li>
               <li className="flex items-center gap-3 text-white/70">
-                <Phone className="w-5 h-5 text-primary" />
-                <span>+91 98765 43210</span>
+                <Phone className="w-5 h-5 text-primary flex-shrink-0" />
+                <a href="tel:+916261302023" className="hover:text-white transition-colors">
+                  +91 6261302023
+                </a>
               </li>
               <li className="flex items-center gap-3 text-white/70">
-                <Mail className="w-5 h-5 text-primary" />
-                <span>hello@tripgo.in</span>
+                <Mail className="w-5 h-5 text-primary flex-shrink-0" />
+                <a href="mailto:prabal@tuta.io" className="hover:text-white transition-colors">
+                  prabal@tuta.io
+                </a>
               </li>
             </ul>
           </div>
@@ -80,7 +95,7 @@ const Footer = () => {
 
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/50 text-sm">
-            © 2024 TripGo. All rights reserved.
+            © {new Date().getFullYear()} TripGo. A product of Roxone PVT LTD. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-white/50">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
