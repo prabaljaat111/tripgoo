@@ -60,22 +60,19 @@ const BottomNav = () => {
         opacity: 0
       }} className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm" onClick={() => setShowServices(false)}>
             <motion.div initial={{
-          y: 100,
           opacity: 0,
           scale: 0.9
         }} animate={{
-          y: 0,
           opacity: 1,
           scale: 1
         }} exit={{
-          y: 100,
           opacity: 0,
           scale: 0.9
         }} transition={{
           type: "spring",
           stiffness: 300,
           damping: 30
-        }} onClick={e => e.stopPropagation()} className="absolute bottom-24 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-lg liquid-glass rounded-3xl p-5 overflow-hidden mx-0 my-0 px-[19px] py-[10px]">
+        }} onClick={e => e.stopPropagation()} className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-lg liquid-glass rounded-3xl p-4 sm:p-5 max-h-[80vh] overflow-y-auto">
               <div className="flex items-center justify-between mb-4 px-[40px] py-0 my-0">
                 <h3 className="font-display font-bold text-lg">All Services</h3>
                 <button onClick={() => setShowServices(false)} className="w-8 h-8 rounded-full bg-black/10 items-center justify-center flex flex-row text-center">
