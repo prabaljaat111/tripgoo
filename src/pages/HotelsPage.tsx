@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
 import Footer from "@/components/layout/Footer";
-import { hotels as mockHotels, destinations } from "@/data/travelData";
+import { hotels as mockHotels } from "@/data/travelData";
 import { 
   Search, 
   Hotel, 
@@ -73,9 +73,21 @@ interface BookingTrack {
   price: string;
 }
 
+interface CityResult {
+  city_id: string;
+  name: string;
+  full_name?: string;
+  country?: string;
+}
+
 const HotelsPage = () => {
   const { toast } = useToast();
-  const [destination, setDestination] = useState("goa");
+  const [destination, setDestination] = useState("");
+  const [selectedCityId, setSelectedCityId] = useState("");
+  const [selectedCityName, setSelectedCityName] = useState("");
+  const [citySuggestions, setCitySuggestions] = useState<CityResult[]>([]);
+  const [isSearchingCity, setIsSearchingCity] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [guests, setGuests] = useState(2);
@@ -88,7 +100,70 @@ const HotelsPage = () => {
   const [bookings, setBookings] = useState<BookingTrack[]>([]);
   const [showBookings, setShowBookings] = useState(false);
 
+  // Debounced city search
+  const searchCities = async (query: string) => {
+    if (query.length < 2) {
+      setCitySuggestions([]);
+      return;
+    }
+
+    setIsSearchingCity(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('city-mapping', {
+        body: { cityName: query }
+      });
+
+      if (error) throw error;
+
+      // Parse the response - Makcorps returns array of city matches
+      if (Array.isArray(data)) {
+        const cities: CityResult[] = data.slice(0, 8).map((item: { document_id?: string; city_id?: string; name?: string; full_name?: string; country?: string }) => ({
+          city_id: item.document_id || item.city_id || '',
+          name: item.name || '',
+          full_name: item.full_name || item.name || '',
+          country: item.country || 'India'
+        }));
+        setCitySuggestions(cities);
+        setShowSuggestions(true);
+      }
+    } catch (error) {
+      console.error("City search error:", error);
+      setCitySuggestions([]);
+    } finally {
+      setIsSearchingCity(false);
+    }
+  };
+
+  const handleCityInputChange = (value: string) => {
+    setDestination(value);
+    setSelectedCityId("");
+    
+    // Debounce the API call
+    const timeoutId = setTimeout(() => {
+      searchCities(value);
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
+  };
+
+  const selectCity = (city: CityResult) => {
+    setDestination(city.full_name || city.name);
+    setSelectedCityId(city.city_id);
+    setSelectedCityName(city.name);
+    setShowSuggestions(false);
+    setCitySuggestions([]);
+  };
+
   const handleSearch = async () => {
+    if (!selectedCityId) {
+      toast({
+        title: "Missing destination",
+        description: "Please select a destination from the suggestions",
+        variant: "destructive"
+      });
+      return;
+    }
+
     if (!checkIn || !checkOut) {
       toast({
         title: "Missing dates",
@@ -102,11 +177,7 @@ const HotelsPage = () => {
     setHasSearched(true);
 
     try {
-      const cityId = CITY_IDS[destination];
-      
-      if (!cityId) {
-        throw new Error("City not supported yet");
-      }
+      const cityId = selectedCityId;
 
       const { data, error } = await supabase.functions.invoke('hotel-search', {
         body: {
@@ -245,18 +316,47 @@ const HotelsPage = () => {
                 <div className="md:col-span-2">
                   <label className="text-sm font-medium mb-2 block">Destination</label>
                   <div className="relative">
-                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                    <select 
+                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground z-10" />
+                    <Input 
+                      type="text"
                       value={destination}
-                      onChange={(e) => setDestination(e.target.value)}
-                      className="w-full h-12 rounded-lg border border-input bg-background pl-10 pr-4 text-base focus:ring-2 focus:ring-primary"
-                    >
-                      {destinations.map((dest) => (
-                        <option key={dest.id} value={dest.id}>
-                          {dest.name}, {dest.state}
-                        </option>
-                      ))}
-                    </select>
+                      onChange={(e) => handleCityInputChange(e.target.value)}
+                      onFocus={() => citySuggestions.length > 0 && setShowSuggestions(true)}
+                      onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+                      placeholder="Search any city worldwide..."
+                      inputSize="lg"
+                      className="pl-10"
+                    />
+                    {isSearchingCity && (
+                      <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground animate-spin" />
+                    )}
+                    
+                    {/* City Suggestions Dropdown */}
+                    <AnimatePresence>
+                      {showSuggestions && citySuggestions.length > 0 && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="absolute top-full left-0 right-0 mt-1 bg-background border border-input rounded-lg shadow-lg z-50 overflow-hidden"
+                        >
+                          {citySuggestions.map((city, index) => (
+                            <button
+                              key={city.city_id || index}
+                              type="button"
+                              onClick={() => selectCity(city)}
+                              className="w-full px-4 py-3 text-left hover:bg-muted transition-colors flex items-center gap-3 border-b border-input last:border-b-0"
+                            >
+                              <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
+                              <div>
+                                <p className="font-medium text-sm">{city.name}</p>
+                                <p className="text-xs text-muted-foreground">{city.full_name || city.country}</p>
+                              </div>
+                            </button>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
 
@@ -461,7 +561,7 @@ const HotelsPage = () => {
                       {isLoading ? "Searching..." : `${searchResults.length} Hotels Found`}
                     </h2>
                     <p className="text-muted-foreground text-sm">
-                      in {destinations.find(d => d.id === destination)?.name} • Real-time prices
+                      in {selectedCityName || destination} • Real-time prices
                     </p>
                   </div>
                   <select className="h-10 rounded-lg border border-input bg-background px-3 text-sm">
