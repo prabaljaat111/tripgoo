@@ -215,14 +215,14 @@ const BottomNav = () => {
               </motion.div>
             </Link>
 
-            {/* Flights Button */}
-            <Link to="/flights">
+            {/* Hotels Button */}
+            <Link to="/hotels">
               <motion.div whileTap={{
                 scale: 0.9
-              }} className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${isActive("/flights") ? "bg-white/50" : ""}`}>
-                <Plane className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${isActive("/flights") ? "text-primary" : "text-foreground/60"}`} />
-                <span className={`text-[9px] sm:text-[10px] font-medium transition-colors ${isActive("/flights") ? "text-primary" : "text-foreground/60"}`}>
-                  Flights
+              }} className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${isActive("/hotels") ? "bg-white/50" : ""}`}>
+                <Hotel className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${isActive("/hotels") ? "text-primary" : "text-foreground/60"}`} />
+                <span className={`text-[9px] sm:text-[10px] font-medium transition-colors ${isActive("/hotels") ? "text-primary" : "text-foreground/60"}`}>
+                  Hotels
                 </span>
               </motion.div>
             </Link>
