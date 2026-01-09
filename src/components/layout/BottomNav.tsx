@@ -57,7 +57,7 @@ const BottomNav = () => {
           type: "spring",
           stiffness: 300,
           damping: 30
-        }} onClick={e => e.stopPropagation()} className="fixed bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 w-[calc(100%-1.5rem)] sm:w-[480px] liquid-glass rounded-3xl p-4 sm:p-5 max-h-[60vh] overflow-y-auto">
+        }} onClick={e => e.stopPropagation()} className="fixed bottom-20 sm:bottom-24 left-3 sm:left-1/2 sm:-translate-x-1/2 w-[calc(100%-1.5rem)] sm:w-[480px] liquid-glass rounded-3xl p-4 sm:p-5 max-h-[60vh] overflow-y-auto">
               <div className="flex items-center justify-between mb-3 sm:mb-4 px-1 sm:px-2">
                 <h3 className="font-display font-bold text-base sm:text-lg">All Services</h3>
                 <button onClick={() => setShowServices(false)} className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/10 items-center justify-center flex">
