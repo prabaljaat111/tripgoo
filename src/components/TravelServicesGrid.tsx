@@ -19,7 +19,7 @@ const itemVariants = {
 const TravelServicesGrid = () => {
   return (
     <motion.div
-      className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-2 sm:gap-4"
+      className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-2 sm:gap-4 justify-items-center"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
