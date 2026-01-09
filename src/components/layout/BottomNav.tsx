@@ -104,22 +104,19 @@ const BottomNav = () => {
         opacity: 0
       }} className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm" onClick={() => setShowProfile(false)}>
             <motion.div initial={{
-          y: 100,
           opacity: 0,
           scale: 0.9
         }} animate={{
-          y: 0,
           opacity: 1,
           scale: 1
         }} exit={{
-          y: 100,
           opacity: 0,
           scale: 0.9
         }} transition={{
           type: "spring",
           stiffness: 300,
           damping: 30
-        }} className="absolute bottom-24 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-sm liquid-glass rounded-3xl p-5 overflow-hidden" onClick={e => e.stopPropagation()}>
+        }} className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] liquid-glass rounded-3xl p-5 overflow-hidden" onClick={e => e.stopPropagation()}>
               <div className="flex items-center gap-3 mb-4 pb-4 border-b border-black/10">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
                   <User className="w-6 h-6 text-white" />
