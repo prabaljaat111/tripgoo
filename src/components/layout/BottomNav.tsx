@@ -72,20 +72,20 @@ const BottomNav = () => {
           type: "spring",
           stiffness: 300,
           damping: 30
-        }} onClick={e => e.stopPropagation()} className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-lg liquid-glass rounded-3xl p-4 sm:p-5 max-h-[80vh] overflow-y-auto">
-              <div className="flex items-center justify-between mb-4 px-[40px] py-0 my-0">
+        }} onClick={e => e.stopPropagation()} className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] liquid-glass rounded-3xl p-5 max-h-[80vh] overflow-y-auto">
+              <div className="flex items-center justify-between mb-4 px-2">
                 <h3 className="font-display font-bold text-lg">All Services</h3>
                 <button onClick={() => setShowServices(false)} className="w-8 h-8 rounded-full bg-black/10 items-center justify-center flex flex-row text-center">
                   <X className="w-4 h-4" />
                 </button>
               </div>
               
-              <div className="grid grid-cols-4 gap-3 my-0 mx-0 px-[10px] py-0 pb-0 pt-0">
-                {travelServices.map(service => <Link key={service.id} to={service.path} onClick={() => setShowServices(false)} className="flex flex-col items-center gap-1.5 p-2 rounded-2xl hover:bg-white/40 active:scale-95 transition-all">
-                    <div className={`w-12 h-12 rounded-2xl ${service.bgColor} flex items-center justify-center shadow-sm`}>
-                      <service.icon className={`w-5 h-5 ${service.color}`} />
+              <div className="grid grid-cols-4 gap-4 px-2">
+                {travelServices.map(service => <Link key={service.id} to={service.path} onClick={() => setShowServices(false)} className="flex flex-col items-center gap-2 p-3 rounded-2xl hover:bg-white/40 active:scale-95 transition-all">
+                    <div className={`w-14 h-14 rounded-2xl ${service.bgColor} flex items-center justify-center shadow-sm`}>
+                      <service.icon className={`w-6 h-6 ${service.color}`} />
                     </div>
-                    <span className="text-[10px] font-medium text-center text-foreground/80 leading-tight line-clamp-2">
+                    <span className="text-[11px] font-medium text-center text-foreground/80 leading-tight line-clamp-2">
                       {service.name}
                     </span>
                   </Link>)}
