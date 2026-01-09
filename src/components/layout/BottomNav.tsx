@@ -13,24 +13,6 @@ const BottomNav = () => {
     user,
     signOut
   } = useAuth();
-  const navItems = [{
-    path: "/",
-    label: "Home",
-    icon: Home
-  }, {
-    path: "/flights",
-    label: "Flights",
-    icon: Plane
-  }, {
-    path: "/copilot",
-    label: "AI",
-    icon: Sparkles,
-    featured: true
-  }, {
-    path: "/hotels",
-    label: "Hotels",
-    icon: Hotel
-  }];
   const isActive = (path: string) => location.pathname === path;
   const handleSignOut = async () => {
     await signOut();
@@ -175,71 +157,93 @@ const BottomNav = () => {
     }} className="fixed bottom-3 sm:bottom-4 left-0 right-0 z-50 flex justify-center px-3 sm:px-4">
         <div className="liquid-glass rounded-2xl sm:rounded-[28px] px-2 sm:px-3 py-1.5 sm:py-2 shadow-2xl w-full max-w-[95vw] sm:max-w-md">
           <div className="flex items-center justify-around">
-            {navItems.map(item => {
-            const active = isActive(item.path);
-            if (item.featured) {
-              return <Link key={item.path} to={item.path} className="relative">
-                    <motion.div whileTap={{
-                  scale: 0.9
-                }} whileHover={{
-                  scale: 1.05
-                }} className="relative -mt-5 sm:-mt-7">
-                      <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/40">
-                        <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                      </div>
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 to-transparent" />
-                      <motion.div className="absolute inset-0 rounded-full bg-primary/20" animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.5, 0, 0.5]
-                  }} transition={{
-                    repeat: Infinity,
-                    duration: 2
-                  }} />
-                    </motion.div>
-                    <span className="absolute -bottom-3 sm:-bottom-4 left-1/2 -translate-x-1/2 text-[8px] sm:text-[9px] font-semibold text-primary whitespace-nowrap">
-                      AI Copilot
-                    </span>
-                  </Link>;
-            }
-            return <Link key={item.path} to={item.path}>
-                  <motion.div whileTap={{
-                scale: 0.9
-              }} className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${active ? "bg-white/50" : ""}`}>
-                    <item.icon className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${active ? "text-primary" : "text-foreground/60"}`} />
-                    <span className={`text-[9px] sm:text-[10px] font-medium transition-colors ${active ? "text-primary" : "text-foreground/60"}`}>
-                      {item.label}
-                    </span>
-                  </motion.div>
-                </Link>;
-          })}
-
-            {/* Profile/Auth Button */}
-            <motion.button whileTap={{
-            scale: 0.9
-          }} onClick={handleProfileClick} className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${showProfile || isActive("/dashboard") || isActive("/auth") ? "bg-white/50" : ""}`}>
-              {user ? <>
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                    <User className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />
-                  </div>
-                  <span className={`text-[9px] sm:text-[10px] font-medium transition-colors ${showProfile || isActive("/dashboard") ? "text-primary" : "text-foreground/60"}`}>
-                    Profile
-                  </span>
-                </> : <>
-                  <LogIn className="w-4 h-4 sm:w-5 sm:h-5 text-foreground/60" />
-                  <span className="text-[9px] sm:text-[10px] font-medium text-foreground/60">
-                    Sign In
-                  </span>
-                </>}
-            </motion.button>
-
             {/* More Services Button */}
             <motion.button whileTap={{
-            scale: 0.9
-          }} onClick={handleServicesClick} className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${showServices ? "bg-white/50" : ""}`}>
+              scale: 0.9
+            }} onClick={handleServicesClick} className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${showServices ? "bg-white/50" : ""}`}>
               <Grid3X3 className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${showServices ? "text-primary" : "text-foreground/60"}`} />
               <span className={`text-[9px] sm:text-[10px] font-medium transition-colors ${showServices ? "text-primary" : "text-foreground/60"}`}>
                 More
               </span>
+            </motion.button>
+
+            {/* Home Button */}
+            <Link to="/">
+              <motion.div whileTap={{
+                scale: 0.9
+              }} className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${isActive("/") ? "bg-white/50" : ""}`}>
+                <Home className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${isActive("/") ? "text-primary" : "text-foreground/60"}`} />
+                <span className={`text-[9px] sm:text-[10px] font-medium transition-colors ${isActive("/") ? "text-primary" : "text-foreground/60"}`}>
+                  Home
+                </span>
+              </motion.div>
+            </Link>
+
+            {/* AI Copilot Featured Button */}
+            <Link to="/copilot" className="relative">
+              <motion.div whileTap={{
+                scale: 0.9
+              }} whileHover={{
+                scale: 1.05
+              }} className="relative -mt-5 sm:-mt-7">
+                <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/40">
+                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                </div>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 to-transparent" />
+                <motion.div className="absolute inset-0 rounded-full bg-primary/20" animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.5, 0, 0.5]
+                }} transition={{
+                  repeat: Infinity,
+                  duration: 2
+                }} />
+              </motion.div>
+              <span className="absolute -bottom-3 sm:-bottom-4 left-1/2 -translate-x-1/2 text-[8px] sm:text-[9px] font-semibold text-primary whitespace-nowrap">
+                AI Copilot
+              </span>
+            </Link>
+
+            {/* Flights Button */}
+            <Link to="/flights">
+              <motion.div whileTap={{
+                scale: 0.9
+              }} className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${isActive("/flights") ? "bg-white/50" : ""}`}>
+                <Plane className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${isActive("/flights") ? "text-primary" : "text-foreground/60"}`} />
+                <span className={`text-[9px] sm:text-[10px] font-medium transition-colors ${isActive("/flights") ? "text-primary" : "text-foreground/60"}`}>
+                  Flights
+                </span>
+              </motion.div>
+            </Link>
+
+            {/* Hotels Button */}
+            <Link to="/hotels">
+              <motion.div whileTap={{
+                scale: 0.9
+              }} className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${isActive("/hotels") ? "bg-white/50" : ""}`}>
+                <Hotel className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${isActive("/hotels") ? "text-primary" : "text-foreground/60"}`} />
+                <span className={`text-[9px] sm:text-[10px] font-medium transition-colors ${isActive("/hotels") ? "text-primary" : "text-foreground/60"}`}>
+                  Hotels
+                </span>
+              </motion.div>
+            </Link>
+
+            {/* Profile/Auth Button */}
+            <motion.button whileTap={{
+              scale: 0.9
+            }} onClick={handleProfileClick} className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${showProfile || isActive("/dashboard") || isActive("/auth") ? "bg-white/50" : ""}`}>
+              {user ? <>
+                <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                  <User className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />
+                </div>
+                <span className={`text-[9px] sm:text-[10px] font-medium transition-colors ${showProfile || isActive("/dashboard") ? "text-primary" : "text-foreground/60"}`}>
+                  Profile
+                </span>
+              </> : <>
+                <LogIn className="w-4 h-4 sm:w-5 sm:h-5 text-foreground/60" />
+                <span className="text-[9px] sm:text-[10px] font-medium text-foreground/60">
+                  Sign In
+                </span>
+              </>}
             </motion.button>
           </div>
         </div>
