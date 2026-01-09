@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plane, Hotel, Home, Sparkles, User, Grid3X3, LogOut, LayoutDashboard, LogIn, X } from "lucide-react";
+import { Plane, Hotel, Home, Sparkles, User, Grid3X3, LogOut, LayoutDashboard, LogIn, X, Car } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { travelServices } from "@/data/travelServices";
@@ -203,6 +203,18 @@ const BottomNav = () => {
               </span>
             </Link>
 
+            {/* Rides Button */}
+            <Link to="/rides">
+              <motion.div whileTap={{
+                scale: 0.9
+              }} className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${isActive("/rides") ? "bg-white/50" : ""}`}>
+                <Car className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${isActive("/rides") ? "text-primary" : "text-foreground/60"}`} />
+                <span className={`text-[9px] sm:text-[10px] font-medium transition-colors ${isActive("/rides") ? "text-primary" : "text-foreground/60"}`}>
+                  Rides
+                </span>
+              </motion.div>
+            </Link>
+
             {/* Flights Button */}
             <Link to="/flights">
               <motion.div whileTap={{
@@ -211,18 +223,6 @@ const BottomNav = () => {
                 <Plane className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${isActive("/flights") ? "text-primary" : "text-foreground/60"}`} />
                 <span className={`text-[9px] sm:text-[10px] font-medium transition-colors ${isActive("/flights") ? "text-primary" : "text-foreground/60"}`}>
                   Flights
-                </span>
-              </motion.div>
-            </Link>
-
-            {/* Hotels Button */}
-            <Link to="/hotels">
-              <motion.div whileTap={{
-                scale: 0.9
-              }} className={`flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl transition-all ${isActive("/hotels") ? "bg-white/50" : ""}`}>
-                <Hotel className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${isActive("/hotels") ? "text-primary" : "text-foreground/60"}`} />
-                <span className={`text-[9px] sm:text-[10px] font-medium transition-colors ${isActive("/hotels") ? "text-primary" : "text-foreground/60"}`}>
-                  Hotels
                 </span>
               </motion.div>
             </Link>

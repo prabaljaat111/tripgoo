@@ -26,6 +26,7 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import RefundPolicyPage from "./pages/RefundPolicyPage";
 import TermsPage from "./pages/TermsPage";
+import RidesPage from "./pages/RidesPage";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,7 @@ const App = () => (
             <Route path="/trains" element={<TrainsPage />} />
             <Route path="/buses" element={<BusesPage />} />
             <Route path="/cabs" element={<CabsPage />} />
+            <Route path="/rides" element={<RidesPage />} />
             <Route path="/tours" element={<ToursPage />} />
             <Route path="/visa" element={<VisaPage />} />
             <Route path="/cruise" element={<CruisePage />} />
