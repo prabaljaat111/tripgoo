@@ -61,31 +61,34 @@ const BottomNav = () => {
       }} className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm" onClick={() => setShowServices(false)}>
             <motion.div initial={{
           opacity: 0,
-          scale: 0.9
+          y: 20,
+          scale: 0.95
         }} animate={{
           opacity: 1,
+          y: 0,
           scale: 1
         }} exit={{
           opacity: 0,
-          scale: 0.9
+          y: 20,
+          scale: 0.95
         }} transition={{
           type: "spring",
           stiffness: 300,
           damping: 30
-        }} onClick={e => e.stopPropagation()} className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] liquid-glass rounded-3xl p-5 max-h-[80vh] overflow-y-auto">
-              <div className="flex items-center justify-between mb-4 px-2">
-                <h3 className="font-display font-bold text-lg">All Services</h3>
-                <button onClick={() => setShowServices(false)} className="w-8 h-8 rounded-full bg-black/10 items-center justify-center flex flex-row text-center">
-                  <X className="w-4 h-4" />
+        }} onClick={e => e.stopPropagation()} className="fixed bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 w-[calc(100%-1.5rem)] sm:w-[480px] liquid-glass rounded-3xl p-4 sm:p-5 max-h-[60vh] overflow-y-auto">
+              <div className="flex items-center justify-between mb-3 sm:mb-4 px-1 sm:px-2">
+                <h3 className="font-display font-bold text-base sm:text-lg">All Services</h3>
+                <button onClick={() => setShowServices(false)} className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/10 items-center justify-center flex">
+                  <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </button>
               </div>
               
-              <div className="grid grid-cols-4 gap-4 px-2">
-                {travelServices.map(service => <Link key={service.id} to={service.path} onClick={() => setShowServices(false)} className="flex flex-col items-center gap-2 p-3 rounded-2xl hover:bg-white/40 active:scale-95 transition-all">
-                    <div className={`w-14 h-14 rounded-2xl ${service.bgColor} flex items-center justify-center shadow-sm`}>
-                      <service.icon className={`w-6 h-6 ${service.color}`} />
+              <div className="grid grid-cols-4 gap-2 sm:gap-4 px-1 sm:px-2">
+                {travelServices.map(service => <Link key={service.id} to={service.path} onClick={() => setShowServices(false)} className="flex flex-col items-center gap-1 sm:gap-2 p-2 sm:p-3 rounded-xl sm:rounded-2xl hover:bg-white/40 active:scale-95 transition-all">
+                    <div className={`w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl ${service.bgColor} flex items-center justify-center shadow-sm`}>
+                      <service.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${service.color}`} />
                     </div>
-                    <span className="text-[11px] font-medium text-center text-foreground/80 leading-tight line-clamp-2">
+                    <span className="text-[9px] sm:text-[11px] font-medium text-center text-foreground/80 leading-tight line-clamp-2">
                       {service.name}
                     </span>
                   </Link>)}
