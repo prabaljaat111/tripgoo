@@ -116,7 +116,7 @@ const BottomNav = () => {
           type: "spring",
           stiffness: 300,
           damping: 30
-        }} className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] liquid-glass rounded-3xl p-5 overflow-hidden" onClick={e => e.stopPropagation()}>
+        }} className="fixed top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] liquid-glass rounded-3xl p-5 overflow-hidden" onClick={e => e.stopPropagation()}>
               <div className="flex items-center gap-3 mb-4 pb-4 border-b border-black/10">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
                   <User className="w-6 h-6 text-white" />
