@@ -444,21 +444,7 @@ const RidesPage = () => {
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
             </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="liquid-glass rounded-2xl p-4 text-center"
-            >
-              <div className="w-12 h-12 mx-auto mb-2 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                <Car className="w-6 h-6 text-primary" />
-              </div>
-              <p className="font-display font-semibold text-sm mb-1">Where to?</p>
-              <p className="text-[10px] text-muted-foreground">
-                Enter pickup & drop to see rides
-              </p>
-            </motion.div>
-          )}
+          ) : null}
         </AnimatePresence>
       </motion.div>
     </div>
