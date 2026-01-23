@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 import { travelServices } from "@/data/travelServices";
 
 const Footer = () => {
@@ -69,26 +69,13 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Company */}
           <div>
-            <h4 className="font-display font-bold text-lg mb-4">Contact Us</h4>
+            <h4 className="font-display font-bold text-lg mb-4">Company</h4>
             <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-white/70">
-                <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
-                <span>India</span>
-              </li>
-              <li className="flex items-center gap-3 text-white/70">
-                <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="tel:+916261302023" className="hover:text-white transition-colors">
-                  +91 6261302023
-                </a>
-              </li>
-              <li className="flex items-center gap-3 text-white/70">
-                <Mail className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="mailto:prabal@tuta.io" className="hover:text-white transition-colors">
-                  prabal@tuta.io
-                </a>
-              </li>
+              <li><Link to="/privacy-policy" className="text-white/70 hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="text-white/70 hover:text-white transition-colors">Terms of Service</Link></li>
+              <li><Link to="/refund-policy" className="text-white/70 hover:text-white transition-colors">Refund Policy</Link></li>
             </ul>
           </div>
         </div>

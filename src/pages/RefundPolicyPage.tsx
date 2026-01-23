@@ -140,14 +140,8 @@ const RefundPolicyPage = () => {
             <section>
               <h2 className="font-display text-2xl font-bold mb-4">11. Contact Us</h2>
               <p className="text-foreground/80 leading-relaxed">
-                For refund-related queries, please contact us:
+                For refund-related queries, please reach out to us through your TripGo account or our platform's support features.
               </p>
-              <div className="mt-4 p-4 bg-muted rounded-xl">
-                <p className="text-foreground font-medium">TripGo Customer Support</p>
-                <p className="text-foreground/80">Email: prabal@tuta.io</p>
-                <p className="text-foreground/80">Phone: +91 6261302023</p>
-                <p className="text-foreground/80">Available: Monday to Saturday, 9 AM - 6 PM IST</p>
-              </div>
             </section>
           </div>
         </motion.div>
