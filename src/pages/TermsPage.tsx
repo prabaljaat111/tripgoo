@@ -169,14 +169,8 @@ const TermsPage = () => {
             <section>
               <h2 className="font-display text-2xl font-bold mb-4">17. Contact Information</h2>
               <p className="text-foreground/80 leading-relaxed">
-                For any questions or concerns regarding these Terms, please contact us:
+                For any questions or concerns regarding these Terms, please reach out to us through our platform.
               </p>
-              <div className="mt-4 p-4 bg-muted rounded-xl">
-                <p className="text-foreground font-medium">Roxone PVT LTD</p>
-                <p className="text-foreground/80">Email: prabal@tuta.io</p>
-                <p className="text-foreground/80">Phone: +91 6261302023</p>
-                <p className="text-foreground/80">Location: India</p>
-              </div>
             </section>
           </div>
         </motion.div>

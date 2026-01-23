@@ -117,14 +117,8 @@ const PrivacyPolicyPage = () => {
             <section>
               <h2 className="font-display text-2xl font-bold mb-4">11. Contact Us</h2>
               <p className="text-foreground/80 leading-relaxed">
-                If you have any questions about this Privacy Policy or our data practices, please contact us at:
+                If you have any questions about this Privacy Policy or our data practices, please reach out to us through our platform.
               </p>
-              <div className="mt-4 p-4 bg-muted rounded-xl">
-                <p className="text-foreground font-medium">Roxone PVT LTD</p>
-                <p className="text-foreground/80">Email: prabal@tuta.io</p>
-                <p className="text-foreground/80">Phone: +91 6261302023</p>
-                <p className="text-foreground/80">Location: India</p>
-              </div>
             </section>
           </div>
         </motion.div>
