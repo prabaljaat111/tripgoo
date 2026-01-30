@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plane, Hotel, Home, Sparkles, User, Grid3X3, LogOut, LayoutDashboard, LogIn, X, Car } from "lucide-react";
+import { Hotel, Home, User, Grid3X3, LogOut, LayoutDashboard, LogIn, X, Car } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { travelServices } from "@/data/travelServices";
@@ -177,30 +177,6 @@ const BottomNav = () => {
                   Home
                 </span>
               </motion.div>
-            </Link>
-
-            {/* AI Copilot Featured Button */}
-            <Link to="/copilot" className="relative">
-              <motion.div whileTap={{
-                scale: 0.9
-              }} whileHover={{
-                scale: 1.05
-              }} className="relative -mt-5 sm:-mt-7">
-                <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/40">
-                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                </div>
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 to-transparent" />
-                <motion.div className="absolute inset-0 rounded-full bg-primary/20" animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.5, 0, 0.5]
-                }} transition={{
-                  repeat: Infinity,
-                  duration: 2
-                }} />
-              </motion.div>
-              <span className="absolute -bottom-3 sm:-bottom-4 left-1/2 -translate-x-1/2 text-[8px] sm:text-[9px] font-semibold text-primary whitespace-nowrap">
-                AI Copilot
-              </span>
             </Link>
 
             {/* Rides Button */}
