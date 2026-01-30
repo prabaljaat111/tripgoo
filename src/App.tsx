@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import BottomNav from "@/components/layout/BottomNav";
 import TopBar from "@/components/layout/TopBar";
+import FloatingAIButton from "@/components/layout/FloatingAIButton";
 import Index from "./pages/Index";
 import CopilotPage from "./pages/CopilotPage";
 import FlightsPage from "./pages/FlightsPage";
@@ -61,6 +62,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <TopBar />
+          <FloatingAIButton />
           <BottomNav />
         </AuthProvider>
       </BrowserRouter>
